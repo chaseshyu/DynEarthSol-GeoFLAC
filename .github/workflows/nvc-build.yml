@@ -21,7 +21,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: get boost
-      run: sudo apt install libboost-program-options-dev
+      run: sudo apt install -y libboost-program-options-dev
     - name: make 2d CPU
       run: make cleanall; make ndims=2
     - name: make 3d CPU
