@@ -32,7 +32,7 @@ jobs:
         curl https://developer.download.nvidia.com/hpc-sdk/ubuntu/DEB-GPG-KEY-NVIDIA-HPC-SDK | sudo gpg --dearmor -o /usr/share/keyrings/nvidia-hpcsdk-archive-keyring.gpg
         echo 'deb [signed-by=/usr/share/keyrings/nvidia-hpcsdk-archive-keyring.gpg] https://developer.download.nvidia.com/hpc-sdk/ubuntu/amd64 /' | sudo tee /etc/apt/sources.list.d/nvhpc.list
         sudo apt-get update -y
-        sudo apt-get install -y nvhpc-23-9
+        sudo apt-get install -y nvhpc-24-7
         sudo apt-get install -y nvidia-cuda-toolkit
 
     - name: Set env for nvc++
@@ -42,7 +42,7 @@ jobs:
         PATH=$NVCOMPILERS/$NVARCH/23.9/compilers/bin:$PATH; export PATH
         echo $PATH >> $GITHUB_PATH
       env:
-        NVHPC_PATH: $NVCOMPILERS/$NVARCH/23.9
+        NVHPC_PATH: $NVCOMPILERS/$NVARCH/24.7
     - name: make 2d CPU with nvidia profiling tools
       run: make cleanall; make CUDA_DIR=$NVHPC_PATH/cuda ndims=2 nprof=1
     - name: make 3d CPU with nvidia profiling tools
