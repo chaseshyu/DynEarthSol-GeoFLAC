@@ -16,6 +16,8 @@ on:
 jobs:
   build:
     runs-on: [self-hosted, Linux]
+    env:
+      DEBIAN_FRONTEND: 'noninteractive'
     steps:
     - uses: actions/checkout@v3
     - name: get boost
